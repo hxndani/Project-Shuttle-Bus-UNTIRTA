@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Shuttle Bus Untirta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .schedule {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .bus-info {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Kode HTML seperti sebelumnya -->
+
+        <div class="bus-info">
+            <h2>Informasi Shuttle Bus Untirta</h2>
+            <table>
+                <tr>
+                    <th>Plat Nomor Bus</th>
+                    <th>Nama Supir</th>
+                    <th>Kapasitas Bus</th>
+                </tr>
+                <tr>
+                    <td>AB 1234 CD</td>
+                    <td>Kevan Altaf</td>
+                    <td id="bus-capacity">30</td>
+                </tr>
+                <!-- Tambahkan baris-baris ini untuk informasi bus lainnya -->
+            </table>
+        </div>
+
+        <div id="capacity-info">
+            <p id="capacity-status"></p>
+            <button id="boarding-button">Boarding (Naik Bus)</button>
+            <button id="arrived-button">Arrived (Sampai)</button>
+        </div>
+    </div>
+
+    <script>
+        // Ambil elemen-elemen HTML yang diperlukan
+        const busCapacityElement = document.getElementById('bus-capacity');
+        const capacityStatusElement = document.getElementById('capacity-status');
+        const boardingButton = document.getElementById('boarding-button');
+        const arrivedButton = document.getElementById('arrived-button');
+
+        // Inisialisasi kapasitas awal bus
+        let busCapacity = 30;
+
+        // Fungsi untuk memeriksa dan memperbarui kapasitas bus
+        function updateBusCapacity() {
+            if (busCapacity > 0) {
+                busCapacity--;
+                capacityStatusElement.textContent = `Masih ada ${busCapacity} kursi yang tersedia`;
+            } else {
+                busCapacity = 0;
+                capacityStatusElement.textContent = 'Kursi Penuh';
+            }
+            busCapacityElement.textContent = busCapacity;
+        }
+
+        // Event listener untuk tombol Boarding
+        boardingButton.addEventListener('click', function() {
+            if (busCapacity > 0) {
+                updateBusCapacity();
+            } else {
+                capacityStatusElement.textContent = 'Kursi Penuh';
+            }
+        });
+
+        // Event listener untuk tombol Arrived
+        arrivedButton.addEventListener('click', function() {
+            if (busCapacity < 30) {
+                busCapacity++;
+                capacityStatusElement.textContent = `Masih ada ${busCapacity} kursi yang tersedia`;
+            } else {
+                capacityStatusElement.textContent = '30 kursi tersedia';
+            }
+            busCapacityElement.textContent = busCapacity;
+        });
+    </script>
+
+<div class="row w-100">
+    <div class="col-lg-6 my-4">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115681.29592731265!2d-77.47713270775661!3d25.0326996781907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x892f7c99b981dbc9%3A0x2aef01d3485e50d2!2sNassau%2C%20Bahamy!5e0!3m2!1spl!2spl!4v1624445118063!5m2!1spl!2spl"
+        class="w-50" height="350" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="col-lg-6 my-4 d-flex align-items-center">
+      <div>
+        
+      </div>
+    </div>
+  </div>
+</body>
+</html>
